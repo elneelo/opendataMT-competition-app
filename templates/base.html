@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<!--
+    author: Neil Barry-Murphy
+    Modifed by David Kelly
+-->
+
+{% load staticfiles %}
+
+<head>
+	<title>{% block title %}MT Competition Platform{% endblock title %}</title>
+	{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+	<link rel="shortcut icon" type="image/x-icon" href="{% static "images/favicon.ico" %}" />
+	{% endblock head %}
+	{% block extrahead %} 
+	{% endblock extrahead%}
+</head>
+
+<html lang="en">
+
+{% block body %}
+<body class="body">
+
+	<header class="mainHeader">
+		{% block header %}
+		<nav><ul>
+			<li><a href="{% url 'accounts:login' %}">Home</a></li>	
+			<li><a href="{% url 'uploader:upload' %}">Upload</a></li>
+			<li><a href="{% url 'comp_entries:entries_home' %}">Competitions</a></li>
+			<li><a href="{% url 'polls:polls_home' %}">Upcoming Competitions</a></li>
+			<li><a href="{% url 'teams:all_teams' %}">Teams</a></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+			{% else %}
+			<li><a href="{% url 'accounts:alt_login' %}">Login</a></li>
+			{% endif %}
+		</ul></nav>
+		{% endblock header %}
+	</header>
+
+	<div class="mainContent">
+		<div class="content">
+            
+            {% block toparticle %}
+            <!-- topcontent article-->
+			<article class="topcontent">
+				{% block content %}
+				<header>
+					<h2>Welcome</h2>
+				</header>
+
+				<footer>
+					<p class="post-info"> </p>
+				</footer>
+
+				<content>
+					<p> </p>
+				</content>
+				{% endblock content %}
+			</article>
+            <!-- end topcontent article-->
+            {% endblock toparticle %}
+
+            {% block middlearticle %}
+            {% comment %}
+            <!-- middlecontent article-->
+			<article class="middlecontent">
+				{% block middlecontent %}
+				<header>
+					<h2>Content ...</h2>
+				</header>
+
+				<footer>
+					<p class="post-info"></p>
+				</footer>
+
+				<content>
+
+				</content>
+				{% endblock middlecontent %}
+			</article>
+            <!-- end middlecontent article-->
+            {% endcomment %}
+            {% endblock middlearticle %}
+
+            {% comment %}
+            {% block bottomcontent %}
+            <!-- bottomcontent article-->
+			<article class="bottomcontent">
+				{% block bottomcontent %}
+				<header>
+					<h2>Content ...</h2>
+				</header>
+
+				<footer>
+					<p class="post-info"></p>
+				</footer>
+
+				<content>
+
+				</content>
+				{% endblock bottomcontent %}
+			</article>
+            <!-- end bottomcontent article -->
+            {% endblock bottomarticle %}
+            {% endcomment %}
+            
+		</div><!-- End content div -->
+	</div> <!-- End mainContent div-->
+
+	{% block pagefooter %}
+	<footer class="mainFooter">
+		<p>Copyright &copy; 2015</p>
+	</footer>
+	{% endblock pagefooter %}
+
+</body>
+{% endblock body %}
+</html>
+
+
+
+
+

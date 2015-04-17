@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block toparticle %}
+<article class="topcontent">
+
+				<header>
+					<h2>Invalid Login</h2>
+				</header>
+
+				<content>
+
+				</content>
+			</article>
+
+			<article class="topcontent">
+				<header>
+					<h2>Error</h2>
+				</header>
+
+				<footer>
+					<p class="post-info"></p>
+				</footer>
+
+				<content>
+					<p>
+						{% block content %}
+
+							<h2>Your login details are invalid.<h2>
+							<p>Click <a href="/accounts/login/">here</a> to login again.</p>
+
+					</p>
+					<p>
+							<h2>Alternatively:</h2>
+							<p>Click <a href="/accounts/register/">here</a> to register an account.</p>
+						{% endblock %}
+					</p>
+				</content>
+			</article>
+{% endblock toparticle %}

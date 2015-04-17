@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block toparticle %}
+<article class="topcontent">
+
+				<header>
+					<h2>Registration</h2>
+				</header>
+				
+				<footer>
+					<p class="post-info"></p>
+				</footer>
+
+				<content>
+					<p>
+						{% block content %}
+
+							<h2>Register</h2>
+							<p>Please create a username, and select your password.</p>
+							<form action="" method="post">{% csrf_token %}
+							{{ form.as_ul }}
+							<br>
+
+							<input type="submit" value="Register" />
+
+							</form>
+
+						{% endblock %}
+					</p>
+				</content>
+			</article>
+{% endblock toparticle %}

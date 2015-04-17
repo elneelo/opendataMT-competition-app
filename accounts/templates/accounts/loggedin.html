@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block toparticle %}
+<article class="topcontent">
+				<header>
+					<h2>Logged in!</h2>
+				</header>
+
+				<footer>
+					<p class="post-info"></p>
+				</footer>
+
+				<content>
+					<p>
+						{% block content %}
+
+							<h2>Hi {{full_name}} you are now logged in!</h2>
+							<p>Click <a href="/accounts/logout/">here</a> to logout.</p>
+
+						{% endblock %}
+					</p>
+				</content>
+			</article>
+{% endblock toparticle %}

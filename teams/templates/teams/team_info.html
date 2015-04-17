@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>Team Info</h2>
+	<h4>{{team.name}}</h4>
+	<p>University: {{team.university}}</p>
+	<br />
+	<h4>Members:</h4>
+	<ul>
+	{% for member in team.userprofile_set.all %}
+		<li>{{member.user.username}}</li>
+	{% endfor %}
+	</ul>
+{% endblock content %}

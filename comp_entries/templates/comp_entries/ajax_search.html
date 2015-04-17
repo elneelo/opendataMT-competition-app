@@ -1,0 +1,15 @@
+{% block content %}
+<article class="topcontent">
+
+{% if comp_entries.count > 0 %}
+
+{% for competition in comp_entries %}
+	<li><a href="/comp_entries/{{ competition.id }}/">{{ competition.name }}</a></li>
+{% endfor %}
+
+{% else %}
+	<li>No links to show.</li>
+{% endif %}
+</article>
+
+{% endblock content %}

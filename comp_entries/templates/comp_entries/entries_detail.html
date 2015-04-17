@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block toparticle %}
+<article class="topcontent">
+
+				<header>
+					<h2>Competition: {{query.name}}</h2>
+				</header>
+					<h4>Deadline Date: {{query.deadline_date}}</h4>
+
+				<content>
+					<p>
+						{{ query.description }}
+					</p>
+				</content>
+
+				<h4>Teams Participating:</h4>
+				<ul>
+				{% for team in query.teams.all %}
+					<li><a href="{% url 'teams:team_info' team.id %}">{{team.name}}</a></li>
+				{% endfor %}
+				</ul>
+			</article>
+
+{% endblock toparticle %}

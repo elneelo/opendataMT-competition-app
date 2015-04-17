@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block toparticle %}
+<article class="topcontent">
+				<header>
+					<h2>Welcome</h2>
+				</header>
+
+				<footer>
+					<p class="post-info"></p>
+				</footer>
+
+				<content>
+					<p>
+						{% block content %}
+							{% if user.is_authenticated %}
+								<p>{{ user.get_username }}, you are logged in!</p>
+							{% else %}
+								{% if form.errors %}
+									<p class="error">Sorry, that's not a valid username or password.</p>
+								{% endif %}
+
+								<form action="/accounts/auth/" method="post">
+								{% csrf_token %}
+									<label for="username">Username: </label>
+									<input type="text" name="username" value="" id="username">
+								</p><p>
+									<label for="password"> Password: </label>
+									<input type="password" name="password" value="" id="password">
+								</p><p>
+								<input type="submit" value="login" />
+								</form>
+
+								<br>
+							<h2>Not a member yet?</h2>
+							<p>Click <a href="/accounts/register">here</a> to register.</p>
+							{% endif %}
+						
+						{% endblock %}
+					</p>
+				</content>
+			</article>
+{% endblock toparticle%}

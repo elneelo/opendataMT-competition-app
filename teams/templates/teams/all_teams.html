@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>All Teams</h2>
+	{% if teams.count > 0 %}
+		<ul>
+		{% for team in teams %}
+			<li><h4><a href="{% url 'teams:team_info' team.id %}">{{team.name}} - {{team.university}}</a></h4></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<p>There are no teams to display.</p>
+	{% endif %}
+{% endblock content %}

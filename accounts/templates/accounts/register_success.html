@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block toparticle %}
+<article class="topcontent">
+				<header>
+					<h2>Registered Successfully</h2>
+				</header>
+
+				<footer>
+					<p class="post-info"></p>
+				</footer>
+
+				<content>
+					<p>
+						{% block content %}
+
+							<h2>You have been successfully registered!<h2>
+							<p>Click <a href="/accounts/login/">here</a> to login.</p>
+
+						{% endblock %}
+					</p>
+				</content>
+			</article>
+{% endblock toparticle %}

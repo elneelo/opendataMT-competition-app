@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block extrahead %}
+	<script src="{% static 'js/jquery-2.0.0.min.js' %}"></script>
+	<script src="{% static 'js/ajax.js' %}"></script>
+{% endblock extrahead %}
+
+{% block toparticle %}
+<article class="topcontent">
+				<header>
+					<h2>Search for an active competition</h2>
+				</header>
+
+				<content>
+					<p>
+						{% block content %}
+						{% csrf_token %}
+						<input type="text" id="search" name="search" />
+						<ul id="search-results">
+
+						</ul>
+						{% endblock %}	
+					</p>
+				</content>
+			</article>
+{% endblock toparticle %}
+
+{% block middlearticle %}
+			<article class="middlecontent">
+
+				<header>
+					<h2>Current Competitions</h2>					
+				</header>
+
+				<content>
+					<p>
+						{% if latest_comp_list %}
+						    <ul>
+						    {% for query in latest_comp_list %}
+								<li><a href="{% url 'comp_entries:entries_detail' query.id %}">{{ query.name }}</a></li>
+						    {% endfor %}
+						    </ul>
+						{% else %}
+						    <p>No competitions are currently available.</p>
+						{% endif %}
+					</p>
+				</content>
+			</article>
+{% endblock middlearticle %}
